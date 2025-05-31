@@ -2,11 +2,12 @@ FROM python:3.10
 
 # Install system packages
 RUN apt-get update && apt-get install -y \
-    wget git nodejs npm python3-dev build-essential libzip-dev libxslt-dev \
-    libldap2-dev libsasl2-dev libffi-dev libpq-dev libjpeg-dev libxml2-dev \
-    libssl-dev xfonts-75dpi xfonts-base && \
-    wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.6/wkhtmltox_0.12.6-1.bionic_amd64.deb && \
-    dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb || apt-get -f install -y
+    gcc g++ python3-dev libxml2-dev libxslt1-dev zlib1g-dev \
+    libsasl2-dev libldap2-dev build-essential \
+    libjpeg-dev libpq-dev libffi-dev \
+    xfonts-75dpi xfonts-base \
+    wget git nodejs npm \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /opt/odoo
