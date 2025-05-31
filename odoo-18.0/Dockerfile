@@ -1,5 +1,5 @@
 FROM python:3.10
-
+RUN python -m pip install --upgrade pip
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     wget git nodejs npm python3-dev build-essential libzip-dev libxslt-dev libldap2-dev libsasl2-dev libffi-dev libpq-dev libjpeg-dev libxml2-dev libssl-dev
